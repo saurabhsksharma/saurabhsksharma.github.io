@@ -17,6 +17,87 @@
             color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode {
+            color: #e4e4e4;
+            background: linear-gradient(135deg, #1a1c2c 0%, #2a1b3d 100%);
+        }
+
+        .dark-mode .header,
+        .dark-mode .section {
+            background: rgba(30, 32, 43, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dark-mode .name {
+            background: linear-gradient(45deg, #a5b4fc, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dark-mode .title {
+            color: #a1a1aa;
+        }
+
+        .dark-mode .contact-item {
+            background: rgba(165, 180, 252, 0.1);
+            color: #e4e4e4;
+        }
+
+        .dark-mode .contact-item:hover {
+            background: rgba(165, 180, 252, 0.2);
+        }
+
+        .dark-mode .section-title {
+            color: #e4e4e4;
+        }
+
+        .dark-mode .summary {
+            color: #a1a1aa;
+        }
+
+        .dark-mode .project-card {
+            background: linear-gradient(145deg, #1e202b, #2a1b3d);
+            border: 1px solid rgba(165, 180, 252, 0.2);
+        }
+
+        .dark-mode .project-title {
+            color: #e4e4e4;
+        }
+
+        .dark-mode .project-description {
+            color: #a1a1aa;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .dark-mode .theme-toggle {
+            background: linear-gradient(45deg, #a5b4fc, #818cf8);
         }
 
         .container {
@@ -40,15 +121,18 @@
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
             margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            color: white;
-            font-weight: bold;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 3px solid rgba(255, 255, 255, 0.3);
             animation: pulse 2s infinite;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         @keyframes pulse {
@@ -66,6 +150,8 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
         }
 
         .title {
@@ -73,6 +159,29 @@
             color: #7f8c8d;
             margin-bottom: 20px;
             font-weight: 300;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
         }
 
         .contact-info {
@@ -245,12 +354,23 @@
             padding: 20px;
             border-radius: 15px;
             border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(102, 126, 234, 0.15);
         }
 
         .skill-category h4 {
             color: #2c3e50;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-size: 1.1rem;
+        }
+
+        .dark-mode .skill-category h4 {
+            color: #e4e4e4;
         }
 
         .skill-tags {
@@ -260,17 +380,28 @@
         }
 
         .skill-tag {
-            background: #667eea;
+            background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
-            padding: 5px 12px;
+            padding: 8px 15px;
             border-radius: 20px;
             font-size: 0.9rem;
             transition: all 0.3s ease;
+            cursor: default;
         }
 
         .skill-tag:hover {
-            background: #764ba2;
-            transform: scale(1.05);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(45deg, #764ba2, #667eea);
+        }
+
+        .dark-mode .skill-category {
+            background: rgba(165, 180, 252, 0.1);
+            border: 1px solid rgba(165, 180, 252, 0.2);
+        }
+
+        .dark-mode .skill-category:hover {
+            background: rgba(165, 180, 252, 0.15);
         }
 
         .projects-grid {
@@ -281,17 +412,55 @@
         }
 
         .project-card {
-            background: linear-gradient(145deg, #f8f9fa, #e9ecef);
-            border-radius: 15px;
-            padding: 25px;
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            transition: all 0.3s ease;
+            perspective: 1000px;
+            background: transparent;
+            min-height: 300px;
             cursor: pointer;
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        .project-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            min-height: 300px;
+        }
+
+        .project-card:hover .project-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .project-card-front,
+        .project-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            padding: 25px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        .project-card-front {
+            background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .dark-mode .project-card-front {
+            background: linear-gradient(145deg, #1e202b, #2a1b3d);
+            border: 1px solid rgba(165, 180, 252, 0.2);
+        }
+
+        .project-card-back {
+            background: linear-gradient(145deg, #667eea, #764ba2);
+            color: white;
+            transform: rotateY(180deg);
         }
 
         .project-title {
@@ -301,15 +470,50 @@
             margin-bottom: 10px;
         }
 
+        .dark-mode .project-title {
+            color: #e4e4e4;
+        }
+
         .project-duration {
             color: #7f8c8d;
             font-size: 0.9rem;
             margin-bottom: 15px;
         }
 
+        .dark-mode .project-duration {
+            color: #a1a1aa;
+        }
+
         .project-description {
             color: #555;
             line-height: 1.6;
+        }
+
+        .dark-mode .project-description {
+            color: #a1a1aa;
+        }
+
+        .project-card-back h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .project-card-back ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .project-card-back li {
+            margin: 15px 0;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .project-card-back li:before {
+            content: "✓";
+            margin-right: 8px;
+            font-weight: bold;
         }
 
         .achievements-grid {
@@ -416,6 +620,16 @@
                 bottom: 20px;
                 right: 20px;
             }
+
+            .project-card {
+                min-height: 250px;
+            }
+            
+            .project-card-inner,
+            .project-card-front,
+            .project-card-back {
+                min-height: 250px;
+            }
         }
     </style>
 </head>
@@ -429,24 +643,26 @@
     gtag('config', 'G-T4H8869Z3Y');
 </script>
 <body>
+    <div id="particles-js"></div>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    
     <div class="container">
         <div class="header">
-            <div class="profile-image">SS</div>
+            <div class="profile-image">
+                <img src="profile.png" alt="Saurabh Sharma">
+            </div>
             <div class="name">Saurabh Sharma</div>
             <div class="title">Application Architect</div>
             <div class="contact-info">
                 <a href="mailto:saurabh.sk.sharma@gmail.com" class="contact-item">
                     📧 saurabh.sk.sharma@gmail.com
                 </a>
-                <!-- <a href="tel:+919560826843" class="contact-item">
-                    📱 +91 95608 26843
-                </a> -->
+                <a href="https://t.me/@saurabhsksharma" class="contact-item" target="_blank">
+                    💬 Telegram
+                </a>
                 <a href="https://linkedin.com/in/saurabhsksharma" class="contact-item" target="_blank">
                     💼 LinkedIn Profile
                 </a>
-                <!-- <a href="https://saurabhs.me/SaurabhSharma_Resume.pdf" class="contact-item" target="_blank">
-                    💼 Resume
-                </a> -->
             </div>
         </div>
 
@@ -605,45 +821,97 @@
             <div class="section-title">Featured Projects</div>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-title">Solve.Care Platform (now Tuumio)</div>
-                    <div class="project-duration">Apr 2021 - Sep 2024</div>
-                    <div class="project-description">
-                        Blockchain-based healthcare coordination platform utilizing distributed ledger technology 
-                        for orchestrating benefits and payments among various healthcare stakeholders including 
-                        patients, physicians, pharmacies, labs, employers, and insurers.
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <div class="project-title">Solve.Care Platform (now Tuumio)</div>
+                            <div class="project-duration">Apr 2021 - Sep 2024</div>
+                            <div class="project-description">
+                                Blockchain-based healthcare coordination platform utilizing distributed ledger technology 
+                                for orchestrating benefits and payments among various healthcare stakeholders.
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <h3>Key Achievements</h3>
+                            <ul>
+                                <li>Orchestrated benefits and payments</li>
+                                <li>Integrated healthcare stakeholders</li>
+                                <li>Enhanced patient care coordination</li>
+                                <li>Implemented blockchain solutions</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+
                 <div class="project-card">
-                    <div class="project-title">iotaSmart Connected-Car Platform</div>
-                    <div class="project-duration">May 2016 - June 2019</div>
-                    <div class="project-description">
-                        Innovated a connected-car gateway serving as the central hub for data from OBD devices 
-                        on diverse vehicles. Key client Haryana Roadways benefited from the gateway crafted 
-                        with the SinoCastel Protocol.
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <div class="project-title">iotaSmart Connected-Car Platform</div>
+                            <div class="project-duration">May 2016 - June 2019</div>
+                            <div class="project-description">
+                                Innovated a connected-car gateway serving as the central hub for data from OBD devices. 
+                                Implemented real-time vehicle monitoring and diagnostics system.
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <h3>Key Achievements</h3>
+                            <ul>
+                                <li>Developed IoT gateway architecture</li>
+                                <li>Implemented real-time monitoring</li>
+                                <li>Enhanced vehicle diagnostics</li>
+                                <li>Optimized data processing</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+
                 <div class="project-card">
-                    <div class="project-title">Su-Kam iManager Smart Inverter App</div>
-                    <div class="project-duration">Mar 2018 - Mar 2019</div>
-                    <div class="project-description">
-                        Developed an app capable of connecting to inverters via BLE dongle through GATT 
-                        protocol to modify inverter power settings, providing smart configuration capabilities.
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <div class="project-title">Su-Kam iManager Smart Inverter App</div>
+                            <div class="project-duration">Mar 2018 - Mar 2019</div>
+                            <div class="project-description">
+                                Developed a smart inverter management app with BLE connectivity for real-time 
+                                monitoring and control of power settings and performance metrics.
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <h3>Key Achievements</h3>
+                            <ul>
+                                <li>Implemented BLE connectivity</li>
+                                <li>Real-time power monitoring</li>
+                                <li>Smart configuration system</li>
+                                <li>Enhanced user experience</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+
                 <div class="project-card">
-                    <div class="project-title">ScreenPost Digital Signage</div>
-                    <div class="project-duration">Mar 2020 - Sep 2020</div>
-                    <div class="project-description">
-                        Created a digital signage application for displaying local media content and campaigns 
-                        on screens, compatible with Android Box and Android Sticks, including web management 
-                        and advertiser campaigning features.
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <div class="project-title">ScreenPost Digital Signage</div>
+                            <div class="project-duration">Mar 2020 - Sep 2020</div>
+                            <div class="project-description">
+                                Created a comprehensive digital signage solution with content management, 
+                                campaign scheduling, and remote device control capabilities.
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <h3>Key Achievements</h3>
+                            <ul>
+                                <li>Built content management system</li>
+                                <li>Implemented campaign scheduling</li>
+                                <li>Remote device management</li>
+                                <li>Analytics dashboard</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="section">
-            <div class="section-title">Key Achievements</div>
+            <div class="section-title">Career Achievements</div>
             <div class="achievements-grid">
                 <div class="achievement-card">
                     <div class="achievement-title">Disintegrated User Nodes</div>
@@ -682,7 +950,72 @@
 
     <div class="floating-action" onclick="scrollToTop()">↑</div>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
+        // Initialize particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#ffffff' },
+                shape: { type: 'circle' },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                    animation: { enable: true, speed: 1, minimumValue: 0.1, sync: false }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    animation: { enable: true, speed: 2, minimumValue: 0.1, sync: false }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#ffffff',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    outMode: 'out',
+                    bounce: false,
+                }
+            },
+            interactivity: {
+                detectsOn: 'canvas',
+                events: {
+                    onHover: { enable: true, mode: 'repulse' },
+                    onClick: { enable: true, mode: 'push' },
+                    resize: true
+                },
+            },
+            retina_detect: true
+        });
+
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            body.classList.toggle('dark-mode');
+            themeToggle.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            
+            // Update particles color based on theme
+            const particlesColor = body.classList.contains('dark-mode') ? '#a5b4fc' : '#ffffff';
+            pJSDom[0].pJS.particles.color.value = particlesColor;
+            pJSDom[0].pJS.particles.line_linked.color = particlesColor;
+            pJSDom[0].pJS.fn.particlesRefresh();
+        }
+
+        // Call initialization functions
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize any required functionality
+        });
+
         function scrollToTop() {
             window.scrollTo({
                 top: 0,
@@ -707,27 +1040,6 @@
 
         document.querySelectorAll('.section').forEach(section => {
             observer.observe(section);
-        });
-
-        // Add hover effects for project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-5px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Add click effects for competency cards
-        document.querySelectorAll('.competency-card').forEach(card => {
-            card.addEventListener('click', () => {
-                card.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    card.style.transform = 'scale(1)';
-                }, 150);
-            });
         });
 
         // Show/hide floating action button based on scroll position
